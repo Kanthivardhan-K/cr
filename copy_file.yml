@@ -1,0 +1,9 @@
+---
+- name: copying files playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: copying index.html file
+    copy:
+      src: /home/ansadmin/index.html
+      dest: /home/ansadmin

@@ -1,0 +1,26 @@
+---
+- name: My PLaybook for installing apache
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family == "RedHat"
+    notify: statring httpd service
+  - name: installing apache2 package
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Debian"
+    notify: starting apache2 service
+  handlers:
+  - name: statring apache2 service
+    service:
+      name: apache2
+      state: started
+  - name: statring httpd service
+    service:
+      name: httpd
+      state: started

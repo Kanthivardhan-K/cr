@@ -1,0 +1,14 @@
+---
+- name: httpd package
+  hosts: all
+  become: true
+  tasks:
+  - name: stopping httpd service
+    service:
+      name: httpd
+      state: stopped
+  - name: uninstalling hhttpd package
+    yum:
+      name: httpd
+      state: removed
+

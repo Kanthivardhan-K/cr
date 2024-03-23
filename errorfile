@@ -1,0 +1,33 @@
+
+PLAY [error handling playbook] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.31.12.133]
+ok: [172.31.3.182]
+
+TASK [installing httpd package] ************************************************
+ok: [172.31.12.133]
+ok: [172.31.3.182]
+
+TASK [starting httpd service] **************************************************
+fatal: [172.31.12.133]: FAILED! => {"changed": false, "msg": "Could not find the requested service http--: host"}
+...ignoring
+fatal: [172.31.3.182]: FAILED! => {"changed": false, "msg": "Could not find the requested service http--: host"}
+...ignoring
+
+TASK [installing apache2 package] **********************************************
+skipping: [172.31.3.182]
+skipping: [172.31.12.133]
+
+TASK [starting apache2 service] ************************************************
+skipping: [172.31.3.182]
+skipping: [172.31.12.133]
+
+TASK [copying index file] ******************************************************
+ok: [172.31.12.133]
+ok: [172.31.3.182]
+
+PLAY RECAP *********************************************************************
+172.31.12.133              : ok=4    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=1   
+172.31.3.182               : ok=4    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=1   
+

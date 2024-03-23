@@ -1,0 +1,8 @@
+---
+- name: installing packages
+  hosts: webservers
+  tasks:
+  - name: installing git
+    yum:
+      name: tree
+      state: present
